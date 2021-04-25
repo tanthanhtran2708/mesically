@@ -1,16 +1,20 @@
 import React from 'react';
-import {View, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
 import AppStack from './screens/main';
-const Stack = createStackNavigator();
+
+import {Provider} from 'react-redux';
+import configureStore from './store/ConfigureStore';
+
+const store = configureStore();
 
 class App extends React.Component {
   render() {
     return (
-      <NavigationContainer>
-        <AppStack />
-      </NavigationContainer>
+      <Provider store={store}>
+        <NavigationContainer>
+          <AppStack />
+        </NavigationContainer>
+      </Provider>
     );
   }
 }
